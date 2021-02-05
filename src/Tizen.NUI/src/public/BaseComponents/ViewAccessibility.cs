@@ -278,5 +278,46 @@ namespace Tizen.NUI.BaseComponents
             if (NDalicPINVOKE.SWIGPendingException.Pending)
                 throw NDalicPINVOKE.SWIGPendingException.Retrieve();
         }
+
+        private IntPtr strdup(string arg)
+        {
+            return Interop.ControlDevel.Dali_Toolkit_DevelControl_AccessibleImpl_NUI_DuplicateString(arg);
+        }
+
+        private IntPtr statesdup(AccessibilityStates states)
+        {
+            return Interop.ControlDevel.Dali_Toolkit_DevelControl_States_Copy(states);
+        }
+
+        private Interop.ControlDevel.AccessibilityDelegate _accessibilityDelegate = null;
+        IntPtr _accessibilityDelegatePtr;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public void SetAccessibilityConstructor(int role, bool modal = false)
+        {
+            var size = Marshal.SizeOf<Interop.ControlDevel.AccessibilityDelegate>();
+
+            if (_accessibilityDelegate == null)
+            {
+                _accessibilityDelegate = new Interop.ControlDevel.AccessibilityDelegate()
+                {
+                    GetName = () => strdup(AccessibilityGetName()),
+                    GetDescription = () => strdup(AccessibilityGetDescription()),
+                    DoAction = (name) => AccessibilityDoAction(Marshal.PtrToStringAnsi(name)),
+                    CalculateStates = () => statesdup(AccessibilityCalculateStates()),
+                };
+                GCHandle.Alloc(_accessibilityDelegate);
+
+                _accessibilityDelegatePtr = Marshal.AllocHGlobal(size);
+                Marshal.StructureToPtr(_accessibilityDelegate, _accessibilityDelegatePtr, false);
+
+                // TODO: GCHandle.Free, Marshal.FreeHGlobal
+            }
+
+            Interop.ControlDevel.Dali_Toolkit_DevelControl_SetAccessibilityConstructor(SwigCPtr, (int)role, modal, _accessibilityDelegatePtr, size);
+
+            if (NDalicPINVOKE.SWIGPendingException.Pending)
+                throw NDalicPINVOKE.SWIGPendingException.Retrieve();
+        }
     }
 }
