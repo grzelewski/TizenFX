@@ -480,6 +480,10 @@ namespace Tizen.NUI.BaseComponents
             }
         }
 
+        public virtual string AccessibilityGetName() { return ""; }
+        public virtual string AccessibilityGetDescription() { return ""; }
+        public virtual bool AccessibilityDoAction(string name) { return false; }
+
         /// <summary>
         /// Whether the CornerRadius property value is relative (percentage [0.0f to 1.0f] of the view size) or absolute (in world units).
         /// It is absolute by default.

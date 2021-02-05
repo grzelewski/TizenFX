@@ -16,6 +16,7 @@
  */
 
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.InteropServices;
 using Tizen.NUI;
@@ -266,6 +267,40 @@ namespace Tizen.NUI.BaseComponents
             if (NDalicPINVOKE.SWIGPendingException.Pending)
                 throw NDalicPINVOKE.SWIGPendingException.Retrieve();
             return result;
+        }
+
+        private IntPtr strdup(string arg)
+        {
+            return Interop.ControlDevel.Dali_Toolkit_DevelControl_AccessibleImpl_NUI_DuplicateString(arg);
+        }
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public void SetAccessibilityConstructor(int role, bool modal = false)
+        {
+            var gcHandles = new List<GCHandle>();
+
+            Interop.ControlDevel.AccessibilityGetName getName = () => strdup(AccessibilityGetName());
+            gcHandles.Add(GCHandle.Alloc(getName));
+
+            Interop.ControlDevel.AccessibilityGetDescription getDescription = () => strdup(AccessibilityGetDescription());
+            gcHandles.Add(GCHandle.Alloc(getDescription));
+
+            Interop.ControlDevel.AccessibilityDoAction doAction = (name) => AccessibilityDoAction(Marshal.PtrToStringAnsi(name));
+            gcHandles.Add(GCHandle.Alloc(doAction));
+
+            // TODO: Pass this callback to SetAccessibilityConstructor
+            // ... = () => { gcHandles.ForEach((h) => h.Free()); };
+
+            Interop.ControlDevel.Dali_Toolkit_DevelControl_SetAccessibilityConstructor
+                (SwigCPtr, // arg1
+                role, // arg2
+                modal, // arg3
+                Marshal.GetFunctionPointerForDelegate(getName), // arg4
+                Marshal.GetFunctionPointerForDelegate(getDescription), // arg5
+                Marshal.GetFunctionPointerForDelegate(doAction)); // arg6
+
+            if (NDalicPINVOKE.SWIGPendingException.Pending)
+                throw NDalicPINVOKE.SWIGPendingException.Retrieve();
         }
     }
 }

@@ -17,6 +17,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using System.Text;
 
 namespace Tizen.NUI
@@ -126,6 +127,24 @@ namespace Tizen.NUI
 
             [global::System.Runtime.InteropServices.DllImport(NDalicPINVOKE.Lib, EntryPoint = "CSharp_Dali_Toolkit_DevelControl_GetBoundAccessibilityObject")]
             public static extern global::System.IntPtr Dali_Toolkit_DevelControl_GetBoundAccessibilityObject(global::System.Runtime.InteropServices.HandleRef arg1);
+
+            // SetAccessibilityConstructor
+
+            [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+            public delegate IntPtr AccessibilityGetName();
+
+            [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+            public delegate IntPtr AccessibilityGetDescription();
+
+            [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+            public delegate bool AccessibilityDoAction(IntPtr name);
+
+            [DllImport(NDalicPINVOKE.Lib, EntryPoint = "CSharp_Dali_Toolkit_DevelControl_SetAccessibilityConstructor_NUI")]
+            public static extern void                  Dali_Toolkit_DevelControl_SetAccessibilityConstructor(HandleRef arg1_self, int arg2_role, bool arg3_modal,
+                IntPtr arg4_getName, IntPtr arg5_getDescription, IntPtr arg6_doAction);
+
+            [DllImport(NDalicPINVOKE.Lib, EntryPoint = "CSharp_Dali_Toolkit_DevelControl_AccessibleImpl_NUI_DuplicateString")]
+            public static extern IntPtr Dali_Toolkit_DevelControl_AccessibleImpl_NUI_DuplicateString(string arg);
         }
     }
 }
