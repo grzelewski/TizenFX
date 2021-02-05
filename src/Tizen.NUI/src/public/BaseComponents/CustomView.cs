@@ -144,6 +144,7 @@ namespace Tizen.NUI.BaseComponents
         /// <since_tizen> 3 </since_tizen>
         public virtual void OnInitialize()
         {
+            SetAccessibilityConstructor(43); // FIXME
         }
 
         /// <summary>
@@ -485,6 +486,16 @@ namespace Tizen.NUI.BaseComponents
         {
         }
 
+        public override bool AccessibilityDoAction(string name)
+        {
+            //Tizen.Log.Error("NUI", $"XXX: CustomView.AccessibilityDoAction({name})");
+
+            if (name == "activate")
+                return OnAccessibilityActivated();
+            else
+                return false;
+        }
+
         /// <summary>
         /// This method is called when the control accessibility is activated.<br />
         /// Derived classes should override this to perform custom accessibility activation.<br />
@@ -492,6 +503,8 @@ namespace Tizen.NUI.BaseComponents
         /// <returns>True if this control can perform accessibility activation.</returns>
         internal virtual bool OnAccessibilityActivated()
         {
+            //Tizen.Log.Error("NUI", "XXX: CustomView.OnAccessibilityActivated");
+            
             return false;
         }
 
