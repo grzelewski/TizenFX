@@ -66,7 +66,7 @@ namespace Tizen.NUI.BaseComponents
         }
 
         protected override bool ReleaseHandle() {
-            Interop.ControlDevel.Dali_Toolkit_DevelControl_delete_AccessibilityRelations(this);
+            Interop.ControlDevel.Dali_Toolkit_DevelControl_delete_AccessibilityRelations(handle);
             if (NDalicPINVOKE.SWIGPendingException.Pending)
                 throw NDalicPINVOKE.SWIGPendingException.Retrieve();
             this.SetHandle(IntPtr.Zero);
@@ -106,7 +106,7 @@ namespace Tizen.NUI.BaseComponents
         }
 
         protected override bool ReleaseHandle() {
-            Interop.ControlDevel.Dali_Toolkit_DevelControl_delete_ReadingInfoType(this);
+            Interop.ControlDevel.Dali_Toolkit_DevelControl_delete_ReadingInfoType(handle);
             if (NDalicPINVOKE.SWIGPendingException.Pending)
                 throw NDalicPINVOKE.SWIGPendingException.Retrieve();
             this.SetHandle(IntPtr.Zero);
@@ -146,15 +146,13 @@ namespace Tizen.NUI.BaseComponents
         }
 
         protected override bool ReleaseHandle() {
-            Interop.ControlDevel.Dali_Toolkit_DevelControl_delete_States(this);
+            Interop.ControlDevel.Dali_Toolkit_DevelControl_delete_States(handle);
             if (NDalicPINVOKE.SWIGPendingException.Pending)
                 throw NDalicPINVOKE.SWIGPendingException.Retrieve();
             this.SetHandle(IntPtr.Zero);
             return true;
         }
     }
-
-
 
     public partial class View
     {

@@ -68,7 +68,7 @@ namespace Tizen.NUI
             public static extern string                Dali_Toolkit_DevelControl_AccessibilityRelations_At(Tizen.NUI.BaseComponents.AddressCollection arg1, int rel, int pos, int id);
 
             [global::System.Runtime.InteropServices.DllImport(NDalicPINVOKE.Lib, EntryPoint = "CSharp_Dali_Toolkit_DevelControl_delete_AccessibilityRelations")]
-            public static extern void                  Dali_Toolkit_DevelControl_delete_AccessibilityRelations(Tizen.NUI.BaseComponents.AddressCollection arg1);
+            public static extern void                  Dali_Toolkit_DevelControl_delete_AccessibilityRelations(IntPtr arg1);
 
             [global::System.Runtime.InteropServices.DllImport(NDalicPINVOKE.Lib, EntryPoint = "CSharp_Dali_Toolkit_DevelControl_ClearAccessibilityRelations")]
             public static extern void                  Dali_Toolkit_DevelControl_ClearAccessibilityRelations(global::System.Runtime.InteropServices.HandleRef arg1);
@@ -92,7 +92,7 @@ namespace Tizen.NUI
             public static extern global::System.IntPtr Dali_Toolkit_DevelControl_new_GetAccessibilityReadingInfoType(global::System.Runtime.InteropServices.HandleRef arg1);
 
             [global::System.Runtime.InteropServices.DllImport(NDalicPINVOKE.Lib, EntryPoint = "CSharp_Dali_Toolkit_DevelControl_delete_ReadingInfoType")]
-            public static extern void                  Dali_Toolkit_DevelControl_delete_ReadingInfoType(Tizen.NUI.BaseComponents.ReadingInfoTypes arg1);
+            public static extern void                  Dali_Toolkit_DevelControl_delete_ReadingInfoType(IntPtr arg1);
 
             [global::System.Runtime.InteropServices.DllImport(NDalicPINVOKE.Lib, EntryPoint = "CSharp_Dali_Toolkit_DevelControl_ReadingInfoTypes_Get")]
             public static extern bool                  Dali_Toolkit_DevelControl_ReadingInfoTypes_Get(Tizen.NUI.BaseComponents.ReadingInfoTypes arg1, int arg2);
@@ -113,7 +113,7 @@ namespace Tizen.NUI
             public static extern global::System.IntPtr Dali_Toolkit_DevelControl_new_States();
 
             [global::System.Runtime.InteropServices.DllImport(NDalicPINVOKE.Lib, EntryPoint = "CSharp_Dali_Toolkit_DevelControl_delete_States")]
-            public static extern void                  Dali_Toolkit_DevelControl_delete_States(Tizen.NUI.BaseComponents.AccessibilityStates arg1);
+            public static extern void                  Dali_Toolkit_DevelControl_delete_States(IntPtr arg1);
 
             [global::System.Runtime.InteropServices.DllImport(NDalicPINVOKE.Lib, EntryPoint = "CSharp_Dali_Toolkit_DevelControl_States_Get")]
             public static extern bool                  Dali_Toolkit_DevelControl_States_Get(Tizen.NUI.BaseComponents.AccessibilityStates arg1, int arg2);
