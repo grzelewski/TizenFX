@@ -485,35 +485,17 @@ namespace Tizen.NUI.BaseComponents
         public virtual bool AccessibilityDoAction(string name) { return false; }
         public virtual AccessibilityStates AccessibilityCalculateStates()
         {
-            /* TODO:
-                Dali::Accessibility::States s;
-                s[Dali::Accessibility::State::FOCUSABLE] = self.GetProperty<bool>(Actor::Property::KEYBOARD_FOCUSABLE);
-                s[Dali::Accessibility::State::FOCUSED]   = Toolkit::KeyboardFocusManager::Get().GetCurrentFocusActor() == self;
-                if(self.GetProperty(Toolkit::DevelControl::Property::ACCESSIBILITY_HIGHLIGHTABLE).GetType() == Dali::Property::NONE)
-                    s[Dali::Accessibility::State::HIGHLIGHTABLE] = false;
-                else
-                    s[Dali::Accessibility::State::HIGHLIGHTABLE] = self.GetProperty(Toolkit::DevelControl::Property::ACCESSIBILITY_HIGHLIGHTABLE).Get<bool>();
-                s[Dali::Accessibility::State::HIGHLIGHTED] = GetCurrentlyHighlightedActor() == self;
-                s[Dali::Accessibility::State::ENABLED]     = true;
-                s[Dali::Accessibility::State::SENSITIVE]   = true;
-                s[Dali::Accessibility::State::ANIMATED]    = self.GetProperty(Toolkit::DevelControl::Property::ACCESSIBILITY_ANIMATED).Get<bool>();
-                s[Dali::Accessibility::State::VISIBLE]     = true;
-                if(modal)
-                {
-                    s[Dali::Accessibility::State::MODAL] = true;
-                }
-                s[Dali::Accessibility::State::SHOWING] = !self.GetProperty(Dali::DevelActor::Property::CULLED).Get<bool>() && self.GetCurrentProperty<bool>(Actor::Property::VISIBLE);
-
-                s[Dali::Accessibility::State::DEFUNCT] = !self.GetProperty(Dali::DevelActor::Property::CONNECTED_TO_SCENE).Get<bool>();
-                return s;
-            */
-
-            //Tizen.Log.Error("NUI", "XXX: AccessibilityCalculateStates");
-
             var states = new AccessibilityStates();
-            states.Set(AccessibilityStates.AccessibilityState.Highlightable, true);
-            states.Set(AccessibilityStates.AccessibilityState.Enabled, true);
-
+            states.Set(AccessibilityStates.AccessibilityState.Highlightable, this.AccessibilityHighlightable);
+            states.Set(AccessibilityStates.AccessibilityState.Focusable, this.Focusable);
+            states.Set(AccessibilityStates.AccessibilityState.Focused, this.State == States.Focused);
+            states.Set(AccessibilityStates.AccessibilityState.Highlighted, Accessibility.AccessibilityManager.Instance.GetCurrentFocusView() == this);
+            states.Set(AccessibilityStates.AccessibilityState.Enabled, this.State != States.Disabled);
+            states.Set(AccessibilityStates.AccessibilityState.Sensitive, this.Sensitive);
+            states.Set(AccessibilityStates.AccessibilityState.Animated, this.AccessibilityAnimated);
+            states.Set(AccessibilityStates.AccessibilityState.Visible, true);
+            states.Set(AccessibilityStates.AccessibilityState.Showing, this.Visibility);
+            states.Set(AccessibilityStates.AccessibilityState.Defunct, !this.IsOnWindow);
             return states;
         }
 
