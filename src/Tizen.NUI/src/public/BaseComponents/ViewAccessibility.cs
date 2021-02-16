@@ -274,6 +274,11 @@ namespace Tizen.NUI.BaseComponents
             return Interop.ControlDevel.Dali_Toolkit_DevelControl_AccessibleImpl_NUI_DuplicateString(arg);
         }
 
+        private IntPtr statesdup(AccessibilityStates states)
+        {
+            return Interop.ControlDevel.Dali_Toolkit_DevelControl_States_Copy(states);
+        }
+
         [EditorBrowsable(EditorBrowsableState.Never)]
         public void SetAccessibilityConstructor(int role, bool modal = false)
         {
@@ -288,6 +293,9 @@ namespace Tizen.NUI.BaseComponents
             Interop.ControlDevel.AccessibilityDoAction doAction = (name) => AccessibilityDoAction(Marshal.PtrToStringAnsi(name));
             gcHandles.Add(GCHandle.Alloc(doAction));
 
+            Interop.ControlDevel.AccessibilityCalculateStates calculateStates = () => statesdup(AccessibilityCalculateStates());
+            gcHandles.Add(GCHandle.Alloc(calculateStates));
+
             // TODO: Pass this callback to SetAccessibilityConstructor
             // ... = () => { gcHandles.ForEach((h) => h.Free()); };
 
@@ -297,7 +305,8 @@ namespace Tizen.NUI.BaseComponents
                 modal, // arg3
                 Marshal.GetFunctionPointerForDelegate(getName), // arg4
                 Marshal.GetFunctionPointerForDelegate(getDescription), // arg5
-                Marshal.GetFunctionPointerForDelegate(doAction)); // arg6
+                Marshal.GetFunctionPointerForDelegate(doAction), // arg6
+                Marshal.GetFunctionPointerForDelegate(calculateStates)); // arg7
 
             if (NDalicPINVOKE.SWIGPendingException.Pending)
                 throw NDalicPINVOKE.SWIGPendingException.Retrieve();

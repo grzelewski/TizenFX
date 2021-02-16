@@ -116,6 +116,9 @@ namespace Tizen.NUI
             [global::System.Runtime.InteropServices.DllImport(NDalicPINVOKE.Lib, EntryPoint = "CSharp_Dali_Toolkit_DevelControl_delete_States")]
             public static extern void                  Dali_Toolkit_DevelControl_delete_States(IntPtr arg1);
 
+            [DllImport(NDalicPINVOKE.Lib, EntryPoint = "CSharp_Dali_Toolkit_DevelControl_States_Copy")]
+            public static extern IntPtr                Dali_Toolkit_DevelControl_States_Copy(Tizen.NUI.BaseComponents.AccessibilityStates arg1);
+
             [global::System.Runtime.InteropServices.DllImport(NDalicPINVOKE.Lib, EntryPoint = "CSharp_Dali_Toolkit_DevelControl_States_Get")]
             public static extern bool                  Dali_Toolkit_DevelControl_States_Get(Tizen.NUI.BaseComponents.AccessibilityStates arg1, int arg2);
 
@@ -139,9 +142,12 @@ namespace Tizen.NUI
             [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
             public delegate bool AccessibilityDoAction(IntPtr name);
 
+            [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+            public delegate IntPtr AccessibilityCalculateStates();
+
             [DllImport(NDalicPINVOKE.Lib, EntryPoint = "CSharp_Dali_Toolkit_DevelControl_SetAccessibilityConstructor_NUI")]
             public static extern void                  Dali_Toolkit_DevelControl_SetAccessibilityConstructor(HandleRef arg1_self, int arg2_role, bool arg3_modal,
-                IntPtr arg4_getName, IntPtr arg5_getDescription, IntPtr arg6_doAction);
+                IntPtr arg4_getName, IntPtr arg5_getDescription, IntPtr arg6_doAction, IntPtr arg7_calculateStates);
 
             [DllImport(NDalicPINVOKE.Lib, EntryPoint = "CSharp_Dali_Toolkit_DevelControl_AccessibleImpl_NUI_DuplicateString")]
             public static extern IntPtr Dali_Toolkit_DevelControl_AccessibleImpl_NUI_DuplicateString(string arg);
