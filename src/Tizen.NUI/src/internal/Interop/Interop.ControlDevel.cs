@@ -166,27 +166,31 @@ namespace Tizen.NUI
             {
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
                 public delegate IntPtr AccessibilityGetName();
-                public AccessibilityGetName GetName;
+                public AccessibilityGetName GetName; // 1
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
                 public delegate IntPtr AccessibilityGetDescription();
-                public AccessibilityGetDescription GetDescription;
+                public AccessibilityGetDescription GetDescription; // 2
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
                 public delegate bool AccessibilityDoAction(IntPtr name);
-                public AccessibilityDoAction DoAction;
+                public AccessibilityDoAction DoAction; // 3
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
                 public delegate IntPtr AccessibilityCalculateStates();
-                public AccessibilityCalculateStates CalculateStates;
+                public AccessibilityCalculateStates CalculateStates; // 4
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
                 public delegate int AccessibilityGetActionCount();
-                public AccessibilityGetActionCount GetActionCount;
+                public AccessibilityGetActionCount GetActionCount; // 5
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
                 public delegate IntPtr AccessibilityGetActionName(int index);
-                public AccessibilityGetActionName GetActionName;
+                public AccessibilityGetActionName GetActionName; // 6
+
+                [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+                public delegate bool AccessibilityShouldReportZeroChildren();
+                public AccessibilityShouldReportZeroChildren ShouldReportZeroChildren; // 7
             }
 
             [DllImport(NDalicPINVOKE.Lib, EntryPoint = "CSharp_Dali_Toolkit_DevelControl_SetAccessibilityConstructor_NUI")]
