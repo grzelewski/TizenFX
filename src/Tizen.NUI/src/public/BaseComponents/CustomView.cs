@@ -491,7 +491,17 @@ namespace Tizen.NUI.BaseComponents
             //Tizen.Log.Error("NUI", $"XXX: CustomView.AccessibilityDoAction({name})");
 
             if (name == "activate")
-                return OnAccessibilityActivated();
+            {
+                if (this.ActivateSignal().Empty() == false)
+                {
+                    this.ActivateSignal().Emit();
+                    return true;
+                }                    
+                else
+                {
+                    return OnAccessibilityActivated();
+                }                    
+            }
             else
                 return false;
         }
