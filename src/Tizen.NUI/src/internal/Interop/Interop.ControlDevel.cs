@@ -154,6 +154,7 @@ namespace Tizen.NUI
             [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
             public delegate IntPtr AccessibilityCalculateStates();
 
+            // Keep this structure layout binary compatible with the respective C# structure!
             [StructLayout(LayoutKind.Sequential)]
             public class AccessibilityDelegate
             {
