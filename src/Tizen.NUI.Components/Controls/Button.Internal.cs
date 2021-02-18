@@ -17,7 +17,15 @@ namespace Tizen.NUI.Components
         private bool isPressed = false;
         private bool styleApplied = false;
 
-        protected override string AccessibilityGetName() { return Text; }
+        protected override string AccessibilityGetName()
+        {
+            return Text;
+        }
+
+        protected override bool AccessibilityShouldReportZeroChildren()
+        {
+            return true;
+        }
 
         /// <summary>
         /// The ButtonExtension instance that is injected by ButtonStyle.
@@ -425,7 +433,7 @@ namespace Tizen.NUI.Components
             LayoutDirectionChanged += OnLayoutDirectionChanged;
 
             AccessibilityManager.Instance.SetAccessibilityAttribute(this, AccessibilityManager.AccessibilityAttribute.Trait, "Button");
-            
+
             #if PROFILE_MOBILE
                 Feedback = true;
             #endif

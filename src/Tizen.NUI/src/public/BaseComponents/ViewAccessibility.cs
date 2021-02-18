@@ -307,6 +307,7 @@ namespace Tizen.NUI.BaseComponents
                     CalculateStates = () => statesdup(AccessibilityCalculateStates()),
                     GetActionCount = () => AccessibilityGetActionCount(),
                     GetActionName = (index) => strdup(AccessibilityGetActionName(index)),
+                    ShouldReportZeroChildren = () => AccessibilityShouldReportZeroChildren(),
                 };
 
                 _accessibilityDelegatePtr = Marshal.AllocHGlobal(size);
