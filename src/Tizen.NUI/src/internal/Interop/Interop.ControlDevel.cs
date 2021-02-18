@@ -176,7 +176,7 @@ namespace Tizen.NUI
             }
 
             [DllImport(NDalicPINVOKE.Lib, EntryPoint = "CSharp_Dali_Toolkit_DevelControl_SetAccessibilityConstructor_NUI")]
-            public static extern void                  Dali_Toolkit_DevelControl_SetAccessibilityConstructor(HandleRef arg1_self, int arg2_role, bool arg3_modal, IntPtr arg4_vtable, int arg5_vtableSize);
+            public static extern void                  Dali_Toolkit_DevelControl_SetAccessibilityConstructor(HandleRef arg1_self, int arg2_role, int arg3_iface, IntPtr arg4_vtable, int arg5_vtableSize);
 
             [DllImport(NDalicPINVOKE.Lib, EntryPoint = "CSharp_Dali_Toolkit_DevelControl_AccessibleImpl_NUI_DuplicateString")]
             public static extern IntPtr Dali_Toolkit_DevelControl_AccessibleImpl_NUI_DuplicateString(string arg);

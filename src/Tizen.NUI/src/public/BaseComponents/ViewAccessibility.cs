@@ -292,8 +292,15 @@ namespace Tizen.NUI.BaseComponents
         private Interop.ControlDevel.AccessibilityDelegate _accessibilityDelegate = null;
         private IntPtr _accessibilityDelegatePtr;
 
+        public enum AccessibilityInterface
+        {
+            None = 0,
+            Value = 1,
+            EditableText = 2,
+        }
+
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public void SetAccessibilityConstructor(Role role, bool modal = false)
+        public void SetAccessibilityConstructor(Role role, AccessibilityInterface iface = AccessibilityInterface.None)
         {
             var size = Marshal.SizeOf<Interop.ControlDevel.AccessibilityDelegate>();
 
@@ -314,7 +321,7 @@ namespace Tizen.NUI.BaseComponents
                 Marshal.StructureToPtr(_accessibilityDelegate, _accessibilityDelegatePtr, false);
             }
 
-            Interop.ControlDevel.Dali_Toolkit_DevelControl_SetAccessibilityConstructor(SwigCPtr, (int)role, modal, _accessibilityDelegatePtr, size);
+            Interop.ControlDevel.Dali_Toolkit_DevelControl_SetAccessibilityConstructor(SwigCPtr, (int)role, (int)iface, _accessibilityDelegatePtr, size);
 
             if (NDalicPINVOKE.SWIGPendingException.Pending)
                 throw NDalicPINVOKE.SWIGPendingException.Retrieve();
