@@ -142,33 +142,33 @@ namespace Tizen.NUI
 
             // SetAccessibilityConstructor
 
-            [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-            public delegate IntPtr AccessibilityGetName();
-
-            [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-            public delegate IntPtr AccessibilityGetDescription();
-
-            [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-            public delegate bool AccessibilityDoAction(IntPtr name);
-
-            [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-            public delegate IntPtr AccessibilityCalculateStates();
-
             // Keep this structure layout binary compatible with the respective C# structure!
             [StructLayout(LayoutKind.Sequential)]
             public class AccessibilityDelegate
             {
-                [MarshalAs(UnmanagedType.FunctionPtr)]
+                [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+                public delegate IntPtr AccessibilityGetName();
                 public AccessibilityGetName GetName;
 
-                [MarshalAs(UnmanagedType.FunctionPtr)]
+                [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+                public delegate IntPtr AccessibilityGetDescription();
                 public AccessibilityGetDescription GetDescription;
 
-                [MarshalAs(UnmanagedType.FunctionPtr)]
+                [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+                public delegate bool AccessibilityDoAction(IntPtr name);
                 public AccessibilityDoAction DoAction;
 
-                [MarshalAs(UnmanagedType.FunctionPtr)]
+                [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+                public delegate IntPtr AccessibilityCalculateStates();
                 public AccessibilityCalculateStates CalculateStates;
+
+                [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+                public delegate int AccessibilityGetActionCount();
+                public AccessibilityGetActionCount GetActionCount;
+
+                [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+                public delegate IntPtr AccessibilityGetActionName(int index);
+                public AccessibilityGetActionName GetActionName;
             }
 
             [DllImport(NDalicPINVOKE.Lib, EntryPoint = "CSharp_Dali_Toolkit_DevelControl_SetAccessibilityConstructor_NUI")]
