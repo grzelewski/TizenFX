@@ -480,10 +480,42 @@ namespace Tizen.NUI.BaseComponents
             }
         }
 
-        public virtual string AccessibilityGetName() { return ""; }
-        public virtual string AccessibilityGetDescription() { return ""; }
-        public virtual bool AccessibilityDoAction(string name) { return false; }
-        public virtual AccessibilityStates AccessibilityCalculateStates()
+        //
+        // Accessibility
+        //
+
+        protected static readonly string AccessibilityActivateAction = "activate";
+        protected static readonly string AccessibilityReadingSkippedAction = "ReadingSkipped";
+        protected static readonly string AccessibilityReadingCancelledAction = "ReadingCancelled";
+        protected static readonly string AccessibilityReadingStoppedAction = "ReadingStopped";
+        protected static readonly string AccessibilityReadingPausedAction = "ReadingPaused";
+        protected static readonly string AccessibilityReadingResumedAction = "ReadingResumed";
+
+        private static readonly string[] AccessibilityActions = {
+            AccessibilityActivateAction,
+            AccessibilityReadingSkippedAction,
+            AccessibilityReadingCancelledAction,
+            AccessibilityReadingStoppedAction,
+            AccessibilityReadingPausedAction,
+            AccessibilityReadingResumedAction,
+        };
+
+        protected virtual string AccessibilityGetName()
+        {
+            return "";
+        }
+
+        protected virtual string AccessibilityGetDescription()
+        {
+            return "";
+        }
+
+        protected virtual bool AccessibilityDoAction(string name)
+        {
+            return false;
+        }
+
+        protected virtual AccessibilityStates AccessibilityCalculateStates()
         {
             var states = new AccessibilityStates();
             states.Set(AccessibilityStates.AccessibilityState.Highlightable, this.AccessibilityHighlightable);
@@ -497,6 +529,19 @@ namespace Tizen.NUI.BaseComponents
             states.Set(AccessibilityStates.AccessibilityState.Showing, this.Visibility);
             states.Set(AccessibilityStates.AccessibilityState.Defunct, !this.IsOnWindow);
             return states;
+        }
+
+        protected virtual int AccessibilityGetActionCount()
+        {
+            return AccessibilityActions.Length;
+        }
+
+        protected virtual string AccessibilityGetActionName(int index)
+        {
+            if (index >= 0 && index < AccessibilityActions.Length)
+                return AccessibilityActions[index];
+            else
+                return "";
         }
 
         /// <summary>
