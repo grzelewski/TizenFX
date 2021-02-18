@@ -343,7 +343,7 @@ namespace Tizen.NUI.BaseComponents
         }
 
         private Interop.ControlDevel.AccessibilityDelegate _accessibilityDelegate = null;
-        IntPtr _accessibilityDelegatePtr;
+        private IntPtr _accessibilityDelegatePtr;
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public void SetAccessibilityConstructor(Role role, bool modal = false)
@@ -359,16 +359,29 @@ namespace Tizen.NUI.BaseComponents
                     DoAction = (name) => AccessibilityDoAction(Marshal.PtrToStringAnsi(name)),
                     CalculateStates = () => statesdup(AccessibilityCalculateStates()),
                 };
-                GCHandle.Alloc(_accessibilityDelegate);
 
                 _accessibilityDelegatePtr = Marshal.AllocHGlobal(size);
                 Marshal.StructureToPtr(_accessibilityDelegate, _accessibilityDelegatePtr, false);
-
-                // TODO: GCHandle.Free, Marshal.FreeHGlobal
             }
 
             Interop.ControlDevel.Dali_Toolkit_DevelControl_SetAccessibilityConstructor(SwigCPtr, (int)role, modal, _accessibilityDelegatePtr, size);
 
-       }
+
+            if (NDalicPINVOKE.SWIGPendingException.Pending)
+                throw NDalicPINVOKE.SWIGPendingException.Retrieve();
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            base.Dispose(disposing);
+
+            if (_accessibilityDelegate != null)
+            {
+                Marshal.DestroyStructure<Interop.ControlDevel.AccessibilityDelegate>(_accessibilityDelegatePtr);
+                Marshal.FreeHGlobal(_accessibilityDelegatePtr);
+                _accessibilityDelegate = null;
+            }
+        }
+    }
 }
 
