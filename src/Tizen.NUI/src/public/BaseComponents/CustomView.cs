@@ -144,7 +144,7 @@ namespace Tizen.NUI.BaseComponents
         /// <since_tizen> 3 </since_tizen>
         public virtual void OnInitialize()
         {
-            SetAccessibilityConstructor(43); // FIXME
+            SetAccessibilityConstructor(Role.Unknown);
         }
 
         /// <summary>

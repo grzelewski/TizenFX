@@ -346,7 +346,7 @@ namespace Tizen.NUI.BaseComponents
         IntPtr _accessibilityDelegatePtr;
 
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public void SetAccessibilityConstructor(int role, bool modal = false)
+        public void SetAccessibilityConstructor(Role role, bool modal = false)
         {
             var size = Marshal.SizeOf<Interop.ControlDevel.AccessibilityDelegate>();
 
