@@ -145,6 +145,7 @@ namespace Tizen.NUI.BaseComponents
         public virtual void OnInitialize()
         {
             SetAccessibilityConstructor(Role.Unknown);
+            AppendAccessibilityAttribute("t", this.GetType().Name);
         }
 
         /// <summary>
