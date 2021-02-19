@@ -315,6 +315,11 @@ namespace Tizen.NUI.BaseComponents
                     GetActionCount = () => AccessibilityGetActionCount(),
                     GetActionName = (index) => strdup(AccessibilityGetActionName(index)),
                     ShouldReportZeroChildren = () => AccessibilityShouldReportZeroChildren(),
+                    GetMinimum = () => AccessibilityGetMinimum(),
+                    GetCurrent = () => AccessibilityGetCurrent(),
+                    GetMaximum = () => AccessibilityGetMaximum(),
+                    SetCurrent = (value) => AccessibilitySetCurrent(value),
+                    GetMinimumIncrement = () => AccessibilityGetMinimumIncrement(),
                 };
 
                 _accessibilityDelegatePtr = Marshal.AllocHGlobal(size);

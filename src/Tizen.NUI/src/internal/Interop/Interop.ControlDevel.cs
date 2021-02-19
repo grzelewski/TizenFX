@@ -173,6 +173,26 @@ namespace Tizen.NUI
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
                 public delegate bool AccessibilityShouldReportZeroChildren();
                 public AccessibilityShouldReportZeroChildren ShouldReportZeroChildren; // 7
+
+                [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+                public delegate double AccessibilityGetMinimum();
+                public AccessibilityGetMinimum GetMinimum; // 8
+
+                [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+                public delegate double AccessibilityGetCurrent();
+                public AccessibilityGetCurrent GetCurrent; // 9
+
+                [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+                public delegate double AccessibilityGetMaximum();
+                public AccessibilityGetMaximum GetMaximum; // 10
+
+                [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+                public delegate bool AccessibilitySetCurrent(double value);
+                public AccessibilitySetCurrent SetCurrent; // 11
+
+                [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+                public delegate double AccessibilityGetMinimumIncrement();
+                public AccessibilityGetMinimumIncrement GetMinimumIncrement; // 12
             }
 
             [DllImport(NDalicPINVOKE.Lib, EntryPoint = "CSharp_Dali_Toolkit_DevelControl_SetAccessibilityConstructor_NUI")]
