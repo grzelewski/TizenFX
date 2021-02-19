@@ -503,28 +503,63 @@ namespace Tizen.NUI.BaseComponents
             }
             else if (name == AccessibilityReadingSkippedAction)
             {
-                // TODO
-                return false;
+                if (this.ReadingSkippedSignal().Empty() == false)
+                {
+                    this.ReadingSkippedSignal().Emit();
+                    return true;
+                }
+                else
+                {
+                    return OnAccessibilityReadingSkipped();
+                }
             }
             else if (name == AccessibilityReadingCancelledAction)
             {
-                // TODO
-                return false;
+                if (this.ReadingCancelledSignal().Empty() == false)
+                {
+                    this.ReadingCancelledSignal().Emit();
+                    return true;
+                }
+                else
+                {
+                    return OnAccessibilityReadingCancelled();
+                }
             }
             else if (name == AccessibilityReadingStoppedAction)
             {
-                // TODO
-                return false;
+                if (this.ReadingStoppedSignal().Empty() == false)
+                {
+                    this.ReadingStoppedSignal().Emit();
+                    return true;
+                }
+                else
+                {
+                    return OnAccessibilityReadingStopped();
+                }
             }
             else if (name == AccessibilityReadingPausedAction)
             {
-                // TODO
-                return false;
+                if (this.ReadingPausedSignal().Empty() == false)
+                {
+                    this.ReadingPausedSignal().Emit();
+                    return true;
+                }
+                else
+                {
+                    return OnAccessibilityReadingPaused();
+                }
             }
             else if (name == AccessibilityReadingResumedAction)
             {
-                // TODO
-                return false;
+                if (this.ReadingResumedSignal().Empty() == false)
+                {
+                    this.ReadingResumedSignal().Emit();
+                    return true;
+                }
+                else
+                {
+                    return OnAccessibilityReadingResumed();
+                }
             }
             else
             {
@@ -538,6 +573,53 @@ namespace Tizen.NUI.BaseComponents
         /// </summary>
         /// <returns>True if this control can perform accessibility activation.</returns>
         internal virtual bool OnAccessibilityActivated()
+        {
+            return false;
+        }
+
+        /// <summary>
+        /// This method is called when the control accessibility is activated.<br />
+        /// Derived classes should override this to perform custom accessibility ReadingSkipped handling.<br />
+        /// </summary>
+        /// <returns>True if this control can perform accessibility  ReadingSkipped handling.</returns>
+        internal virtual bool OnAccessibilityReadingSkipped()
+        {
+            return false;
+        }
+
+        /// <summary>
+        /// This method is called when the control accessibility is activated.<br />
+        /// Derived classes should override this to perform custom accessibility ReadingCancelled handling.<br />
+        /// </summary>
+        /// <returns>True if this control can perform accessibility ReadingCancelled handling.</returns>
+        internal virtual bool OnAccessibilityReadingCancelled()
+        {
+            return false;
+        }
+        /// <summary>
+        /// This method is called when the control accessibility is activated.<br />
+        /// Derived classes should override this to perform custom accessibility ReadingStopped handling.<br />
+        /// </summary>
+        /// <returns>True if this control can perform accessibility ReadingStopped handling.</returns>
+        internal virtual bool OnAccessibilityReadingStopped()
+        {
+            return false;
+        }
+        /// <summary>
+        /// This method is called when the control accessibility is activated.<br />
+        /// Derived classes should override this to perform custom accessibility ReadingPaused handling.<br />
+        /// </summary>
+        /// <returns>True if this control can perform accessibility ReadingPaused handling.</returns>
+        internal virtual bool OnAccessibilityReadingPaused()
+        {
+            return false;
+        }
+        /// <summary>
+        /// This method is called when the control accessibility is activated.<br />
+        /// Derived classes should override this to perform custom accessibility ReadingResumed handling.<br />
+        /// </summary>
+        /// <returns>True if this control can perform accessibility ReadingResumed handling.</returns>
+        internal virtual bool OnAccessibilityReadingResumed()
         {
             return false;
         }
