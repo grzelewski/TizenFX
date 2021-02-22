@@ -236,5 +236,19 @@ namespace Tizen.NUI.Components
 
             base.Dispose(type);
         }
+
+        public override void OnInitialize()
+        {
+            base.OnInitialize();
+            SetAccessibilityConstructor(Role.Dialog);
+            AppendAccessibilityAttribute("sub-role", "Alert");
+        }
+
+        protected override AccessibilityStates AccessibilityCalculateStates()
+        {
+            var states = base.AccessibilityCalculateStates();
+            states.Set(AccessibilityStates.AccessibilityState.Modal, true);
+            return states;
+        }
     }
 }
