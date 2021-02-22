@@ -142,7 +142,7 @@ namespace Tizen.NUI
 
             // SetAccessibilityConstructor
 
-            // Keep this structure layout binary compatible with the respective C# structure!
+            // Keep this structure layout binary compatible with the respective C++ structure!
             [StructLayout(LayoutKind.Sequential)]
             public class AccessibilityDelegate
             {
@@ -193,6 +193,50 @@ namespace Tizen.NUI
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
                 public delegate double AccessibilityGetMinimumIncrement();
                 public AccessibilityGetMinimumIncrement GetMinimumIncrement; // 12
+
+                [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+                public delegate bool AccessibilityIsScrollable();
+                public AccessibilityIsScrollable IsScrollable; // 13
+
+                [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+                public delegate IntPtr AccessibilityGetText(int startOffset, int endOffset);
+                public AccessibilityGetText GetText; // 14
+
+                [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+                public delegate int AccessibilityGetCharacterCount();
+                public AccessibilityGetCharacterCount GetCharacterCount; // 15
+
+                [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+                public delegate int AccessibilityGetCaretOffset();
+                public AccessibilityGetCaretOffset GetCaretOffset; // 16
+
+                [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+                public delegate bool AccessibilitySetCaretOffset(int offset);
+                public AccessibilitySetCaretOffset SetCaretOffset; // 17
+
+                [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+                public delegate IntPtr AccessibilityGetTextAtOffset(int offset, int boundary);
+                public AccessibilityGetTextAtOffset GetTextAtOffset; // 18
+
+                [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+                public delegate IntPtr AccessibilityGetSelection(int selectionNum);
+                public AccessibilityGetSelection GetSelection; // 19
+
+                [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+                public delegate bool AccessibilityRemoveSelection(int selectionNum);
+                public AccessibilityRemoveSelection RemoveSelection; // 20
+
+                [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+                public delegate bool AccessibilitySetSelection(int selectionNum, int startOffset, int endOffset);
+                public AccessibilitySetSelection SetSelection; // 21
+
+                [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+                public delegate bool AccessibilityCopyText(int startPosition, int endPosition);
+                public AccessibilityCopyText CopyText; // 22
+
+                [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+                public delegate bool AccessibilityCutText(int startPosition, int endPosition);
+                public AccessibilityCutText CutText; // 22
             }
 
             [DllImport(NDalicPINVOKE.Lib, EntryPoint = "CSharp_Dali_Toolkit_DevelControl_SetAccessibilityConstructor_NUI")]
