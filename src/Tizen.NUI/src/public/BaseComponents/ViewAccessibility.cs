@@ -157,6 +157,13 @@ namespace Tizen.NUI.BaseComponents
         }
     }
 
+    [EditorBrowsable(EditorBrowsableState.Never)]
+    public class AccessibilityRange {
+        public int StartOffset { get; set; } = 0;
+        public int EndOffset { get; set; } = 0;
+        public string Content { get; set; } = "";
+    }
+
     /// <summary>
     /// View is the base class for all views.
     /// </summary>
@@ -342,6 +349,11 @@ namespace Tizen.NUI.BaseComponents
             return Interop.ControlDevel.Dali_Toolkit_DevelControl_States_Copy(states);
         }
 
+        private IntPtr rangedup(AccessibilityRange range)
+        {
+            return Interop.ControlDevel.Dali_Accessibility_new_Range(range.StartOffset, range.EndOffset, range.Content);
+        }
+
         private Interop.ControlDevel.AccessibilityDelegate _accessibilityDelegate = null;
         private IntPtr _accessibilityDelegatePtr;
 
@@ -373,6 +385,17 @@ namespace Tizen.NUI.BaseComponents
                     GetMaximum = () => AccessibilityGetMaximum(),
                     SetCurrent = (value) => AccessibilitySetCurrent(value),
                     GetMinimumIncrement = () => AccessibilityGetMinimumIncrement(),
+                    IsScrollable = () => AccessibilityIsScrollable(),
+                    GetText = (startOffset, endOffset) => strdup(AccessibilityGetText(startOffset, endOffset)),
+                    GetCharacterCount = () => AccessibilityGetCharacterCount(),
+                    GetCaretOffset = () => AccessibilityGetCaretOffset(),
+                    SetCaretOffset = (offset) => AccessibilitySetCaretOffset(offset),
+                    GetTextAtOffset = (offset, boundary) => rangedup(AccessibilityGetTextAtOffset(offset, (TextBoundary)boundary)),
+                    GetSelection = (selectionNum) => rangedup(AccessibilityGetSelection(selectionNum)),
+                    RemoveSelection = (selectionNum) => AccessibilityRemoveSelection(selectionNum),
+                    SetSelection = (selectionNum, startOffset, endOffset) => AccessibilitySetSelection(selectionNum, startOffset, endOffset),
+                    CopyText = (startPosition, endPosition) => AccessibilityCopyText(startPosition, endPosition),
+                    CutText = (startPosition, endPosition) => AccessibilityCutText(startPosition, endPosition),
                 };
 
                 _accessibilityDelegatePtr = Marshal.AllocHGlobal(size);

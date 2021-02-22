@@ -574,6 +574,61 @@ namespace Tizen.NUI.BaseComponents
             return 0.0;
         }
 
+        protected virtual bool AccessibilityIsScrollable()
+        {
+            return false;
+        }
+
+        protected virtual string AccessibilityGetText(int startOffset, int endOffset)
+        {
+            return "";
+        }
+
+        protected virtual int AccessibilityGetCharacterCount()
+        {
+            return 0;
+        }
+
+        protected virtual int AccessibilityGetCaretOffset()
+        {
+            return 0;
+        }
+
+        protected virtual bool AccessibilitySetCaretOffset(int offset)
+        {
+            return false;
+        }
+
+        protected virtual AccessibilityRange AccessibilityGetTextAtOffset(int offset, TextBoundary boundary)
+        {
+            return new AccessibilityRange();
+        }
+
+        protected virtual AccessibilityRange AccessibilityGetSelection(int selectionNum)
+        {
+            return new AccessibilityRange();
+        }
+
+        protected virtual bool AccessibilityRemoveSelection(int selectionNum)
+        {
+            return false;
+        }
+
+        protected virtual bool AccessibilitySetSelection(int selectionNum, int startOffset, int endOffset)
+        {
+            return false;
+        }
+
+        protected virtual bool AccessibilityCopyText(int startPosition, int endPosition)
+        {
+            return false;
+        }
+
+        protected virtual bool AccessibilityCutText(int startPosition, int endPosition)
+        {
+            return false;
+        }
+
         /// <summary>
         /// Whether the CornerRadius property value is relative (percentage [0.0f to 1.0f] of the view size) or absolute (in world units).
         /// It is absolute by default.
