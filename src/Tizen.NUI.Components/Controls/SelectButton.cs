@@ -79,6 +79,13 @@ namespace Tizen.NUI.Components
             Initialize();
         }
 
+        protected override AccessibilityStates AccessibilityCalculateStates()
+        {
+            var states = base.AccessibilityCalculateStates();
+            states.Set(AccessibilityStates.AccessibilityState.Checked, this.IsSelected);
+            return states;
+        }
+
         /// <summary>
         /// An event for the item selected signal which can be used to subscribe or unsubscribe the event handler provided by the user.<br />
         /// </summary>
