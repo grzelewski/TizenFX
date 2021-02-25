@@ -518,16 +518,16 @@ namespace Tizen.NUI.BaseComponents
         protected virtual AccessibilityStates AccessibilityCalculateStates()
         {
             var states = new AccessibilityStates();
-            states.Set(AccessibilityStates.AccessibilityState.Highlightable, this.AccessibilityHighlightable);
-            states.Set(AccessibilityStates.AccessibilityState.Focusable, this.Focusable);
-            states.Set(AccessibilityStates.AccessibilityState.Focused, this.State == States.Focused);
-            states.Set(AccessibilityStates.AccessibilityState.Highlighted, Accessibility.AccessibilityManager.Instance.GetCurrentFocusView() == this);
-            states.Set(AccessibilityStates.AccessibilityState.Enabled, this.State != States.Disabled);
-            states.Set(AccessibilityStates.AccessibilityState.Sensitive, this.Sensitive);
-            states.Set(AccessibilityStates.AccessibilityState.Animated, this.AccessibilityAnimated);
-            states.Set(AccessibilityStates.AccessibilityState.Visible, true);
-            states.Set(AccessibilityStates.AccessibilityState.Showing, this.Visibility);
-            states.Set(AccessibilityStates.AccessibilityState.Defunct, !this.IsOnWindow);
+            states.Set(AccessibilityState.Highlightable, this.AccessibilityHighlightable);
+            states.Set(AccessibilityState.Focusable, this.Focusable);
+            states.Set(AccessibilityState.Focused, this.State == States.Focused);
+            states.Set(AccessibilityState.Highlighted, Accessibility.AccessibilityManager.Instance.GetCurrentFocusView() == this);
+            states.Set(AccessibilityState.Enabled, this.State != States.Disabled);
+            states.Set(AccessibilityState.Sensitive, this.Sensitive);
+            states.Set(AccessibilityState.Animated, this.AccessibilityAnimated);
+            states.Set(AccessibilityState.Visible, true);
+            states.Set(AccessibilityState.Showing, this.Visibility);
+            states.Set(AccessibilityState.Defunct, !this.IsOnWindow);
             return states;
         }
 
