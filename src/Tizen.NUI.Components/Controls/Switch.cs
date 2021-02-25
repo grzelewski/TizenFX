@@ -335,6 +335,11 @@ namespace Tizen.NUI.Components
 
         private void OnSelect()
         {
+            if (Accessibility.AccessibilityManager.Instance.GetCurrentFocusView() == this)
+            {
+                EmitAccessibilityStateChangedEvent(AccessibilityState.Checked, IsSelected);
+            }
+
             ((SwitchExtension)Extension)?.OnSelectedChanged(this);
 
             if (SelectedEvent != null)

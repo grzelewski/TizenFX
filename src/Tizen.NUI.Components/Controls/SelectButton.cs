@@ -220,6 +220,11 @@ namespace Tizen.NUI.Components
         {
             if (info.PreviousState.Contains(ControlState.Selected) != info.CurrentState.Contains(ControlState.Selected))
             {
+                if (Accessibility.AccessibilityManager.Instance.GetCurrentFocusView() == this)
+                {
+                    EmitAccessibilityStateChangedEvent(AccessibilityState.Checked, info.CurrentState.Contains(ControlState.Selected));
+                }
+                
                 // SelectedChanged is invoked when button or key is unpressed.
                 if (invokeSelectedChanged == false)
                 {
