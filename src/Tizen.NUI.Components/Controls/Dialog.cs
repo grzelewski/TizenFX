@@ -215,6 +215,8 @@ namespace Tizen.NUI.Components
         [EditorBrowsable(EditorBrowsableState.Never)]
         protected override void Dispose(DisposeTypes type)
         {
+            this.RemovePopup();
+
             if (disposed)
             {
                 return;
@@ -242,6 +244,7 @@ namespace Tizen.NUI.Components
             base.OnInitialize();
             SetAccessibilityConstructor(Role.Dialog);
             AppendAccessibilityAttribute("sub-role", "Alert");
+            this.AddPopup();
         }
 
         protected override AccessibilityStates AccessibilityCalculateStates()
