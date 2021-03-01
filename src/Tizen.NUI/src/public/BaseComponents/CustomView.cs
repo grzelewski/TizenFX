@@ -487,6 +487,7 @@ namespace Tizen.NUI.BaseComponents
         {
         }
 
+        [EditorBrowsable(EditorBrowsableState.Never)]
         protected override bool AccessibilityDoAction(string name)
         {
             if (name == AccessibilityActivateAction)

@@ -62,12 +62,20 @@ namespace Tizen.NUI.Components
             Initialize();
         }
 
+        /// <summary>
+        /// Initilize AT-SPI object.
+        /// </summary>
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public override void OnInitialize()
         {
             base.OnInitialize();
             SetAccessibilityConstructor(Role.ToggleButton);
         }
 
+        /// <summary>
+        /// Prevents from showing child widgets in AT-SPI tree.
+        /// </summary>
+        [EditorBrowsable(EditorBrowsableState.Never)]
         protected override AccessibilityStates AccessibilityCalculateStates()
         {
             var states = base.AccessibilityCalculateStates();
