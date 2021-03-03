@@ -162,6 +162,53 @@ namespace Tizen.NUI.Components
             Initialize();
         }
 
+
+        /// <summary>
+        /// Initliaze AT-SPI object.
+        /// </summary>
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override void OnInitialize()
+        {
+            base.OnInitialize();
+            SetAccessibilityConstructor(Role.ProgressBar, AccessibilityInterface.Value);
+        }
+
+        /// <summary>
+        /// Prevents from showing child widgets in AT-SPI tree.
+        /// </summary>
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        protected override bool AccessibilityShouldReportZeroChildren()
+        {
+            return true;
+        }
+
+        /// <summary>
+        /// Minimum value.
+        /// </summary>
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        protected override double AccessibilityGetMinimum()
+        {
+            return (double)MinValue;
+        }
+
+        /// <summary>
+        /// Current value.
+        /// </summary>
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        protected override double AccessibilityGetCurrent()
+        {
+            return (double)CurrentValue;
+        }
+
+        /// <summary>
+        /// Maximum value.
+        /// </summary>
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        protected override double AccessibilityGetMaximum()
+        {
+            return (double)MaxValue;
+        }
+
         /// <summary>
         /// The status type of the Progress.
         /// </summary>
@@ -509,6 +556,7 @@ namespace Tizen.NUI.Components
 
         private void Initialize()
         {
+            AccessibilityHighlightable = true;
             // create necessary components
             InitializeTrack();
             InitializeBuffer();
