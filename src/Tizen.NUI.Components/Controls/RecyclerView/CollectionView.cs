@@ -698,6 +698,13 @@ namespace Tizen.NUI.Components
             base.ScrollTo(scrollPos, animate);
         }
 
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        protected override bool AccessibilityScrollToChild(View child)
+        {
+            ScrollTo(child);
+            return true;
+        }
+
         // Realize and Decorate the item.
         internal override RecyclerViewItem RealizeItem(int index)
         {

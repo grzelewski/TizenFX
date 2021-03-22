@@ -677,6 +677,12 @@ namespace Tizen.NUI.BaseComponents
             return false;
         }
 
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        protected virtual bool AccessibilityScrollToChild(View child)
+        {
+            return false;
+        }
+
         /// <summary>
         /// Whether the CornerRadius property value is relative (percentage [0.0f to 1.0f] of the view size) or absolute (in world units).
         /// It is absolute by default.

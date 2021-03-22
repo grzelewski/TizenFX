@@ -443,6 +443,12 @@ namespace Tizen.NUI.BaseComponents
                     SetSelection = (selectionNum, startOffset, endOffset) => AccessibilitySetSelection(selectionNum, startOffset, endOffset),
                     CopyText = (startPosition, endPosition) => AccessibilityCopyText(startPosition, endPosition),
                     CutText = (startPosition, endPosition) => AccessibilityCutText(startPosition, endPosition),
+                    ScrollToChild = (child) => {
+                        var view = new View(child, true);
+                        var ret = AccessibilityScrollToChild(view);
+                        view.Dispose();
+                        return ret;
+                    },
                 };
 
                 _accessibilityDelegatePtr = Marshal.AllocHGlobal(size);
