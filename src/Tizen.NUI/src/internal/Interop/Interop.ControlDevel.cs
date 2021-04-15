@@ -304,6 +304,16 @@ namespace Tizen.NUI
                 public delegate bool AccessibilityCutText(int startPosition, int endPosition);
                 [EditorBrowsable(EditorBrowsableState.Never)]
                 public AccessibilityCutText CutText; // 23
+
+                [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+                public delegate bool AccessibilityInsertText(int startPosition, IntPtr content);
+                [EditorBrowsable(EditorBrowsableState.Never)]
+                public AccessibilityInsertText InsertText; // 24
+
+                [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+                public delegate bool AccessibilitySetTextContents(IntPtr content);
+                [EditorBrowsable(EditorBrowsableState.Never)]
+                public AccessibilitySetTextContents SetTextContents; // 25
             }
 
             [DllImport(NDalicPINVOKE.Lib, EntryPoint = "CSharp_Dali_Toolkit_DevelControl_SetAccessibilityConstructor_NUI")]

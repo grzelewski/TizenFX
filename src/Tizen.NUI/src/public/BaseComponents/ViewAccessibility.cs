@@ -358,6 +358,8 @@ namespace Tizen.NUI.BaseComponents
                     SetSelection = (selectionNum, startOffset, endOffset) => AccessibilitySetSelection(selectionNum, startOffset, endOffset),
                     CopyText = (startPosition, endPosition) => AccessibilityCopyText(startPosition, endPosition),
                     CutText = (startPosition, endPosition) => AccessibilityCutText(startPosition, endPosition),
+                    InsertText = (startPosition, content) => AccessibilityInsertText(startPosition, Marshal.PtrToStringAnsi(content)),
+                    SetTextContents = (content) => AccessibilitySetTextContents(Marshal.PtrToStringAnsi(content)),
                 };
 
                 _accessibilityDelegatePtr = Marshal.AllocHGlobal(size);
