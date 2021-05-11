@@ -92,6 +92,7 @@ namespace Tizen.NUI.Components
         public Navigator() : base()
         {
             Layout = new AbsoluteLayout();
+            Initialize();
         }
         
         /// <summary>
@@ -515,6 +516,15 @@ namespace Tizen.NUI.Components
             return navigationPages[navigationPages.Count - 1];
         }
 
+        /// <inheritdoc/>
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override void OnInitialize()
+        {
+            base.OnInitialize();
+            SetAccessibilityConstructor(Role.ProgressBar);
+        }
+
+
         /// <summary>
         /// Disposes Navigator and all children on it.
         /// </summary>
@@ -680,6 +690,11 @@ namespace Tizen.NUI.Components
         internal void InvokeTransitionFinished()
         {
             TransitionFinished?.Invoke(this, new EventArgs());
+        }
+
+        private void Initialize()
+        {
+            AccessibilityHighlightable = true;
         }
     }
 }
